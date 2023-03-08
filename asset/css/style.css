@@ -1,0 +1,61 @@
+/******************
+***rating system
+*****************/
+.grade {
+    padding: 10px;
+    background: #f1f496;
+    border-radius: 20px;
+    border: 1px solid;
+    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.rating p {
+    text-align: center;
+}
+.rating {
+    display: inline-block;
+}
+.rating input[type="radio"] {
+    display: none;
+}
+.rating label {
+    text-align: center;
+    color: #171e20e6;
+    font-size: 36px;
+    padding: 2px;
+    cursor: pointer;
+}
+.rating label:hover,
+.rating label:hover ~ label,
+.rating input[type="radio"]:checked ~ label {
+    color: #f2b01e;
+    transition: 0.3s;
+}
+.rating form.stars {width: 90%;margin: 10px auto;}
+@media only screen and (max-width: 900px){
+    .container {
+        width: 100%;
+    }
+    .single-content {
+        width: 100%;
+    }
+    .main-content {
+        width: 95%;
+    }
+    .single-sidebar {
+        text-align: center;
+        width: 100%;
+        margin-right: 0;
+    }
+    .info-section ul {display: block;}
+    .text-content-section {margin: 20px 0;}
+    .average-rating {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .average-rating > img {
+        margin-bottom: 20px;
+    }
+}
