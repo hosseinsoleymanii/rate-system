@@ -1,8 +1,8 @@
 //use this code anywhere in your WordPress theme to display the ratting form and more
 
 <div class="average-rating">
-    <img src="<?php echo TD;?>/asset/imgs/rate.png" alt="">
-    میانگین امتیازات: <?php echo get_average_rating( get_the_ID() ); ?> ستاره
+<img src="<?php echo TD;?>/asset/imgs/rate.png" alt="">
+میانگین امتیازات: <?php echo get_average_rating( get_the_ID() ); ?> ستاره
 </div>
 <br>
 <div class="grade">
@@ -33,6 +33,9 @@
         }
     }
     ?>
+    <?php
+    if(is_user_logged_in()){
+    ?>
     <div class="rating">
     <p><strong>به این مقاله امتیاز بده</strong></p>
     <form method="post" action="" class="stars">
@@ -49,6 +52,13 @@
         <input type="submit" name="submit" value="تایید" />
     </form>
     </div>
+    <?php
+    }else{
+    ?>
+    <?php echo "برای ثبت امتیاز ابتدا وارد سایت شوید!"?>
+    <?php
+    }
+    ?>
     <?php } ?>
 </div>
 
