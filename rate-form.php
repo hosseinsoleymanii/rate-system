@@ -55,7 +55,10 @@
     <?php
     }else{
     ?>
-    <?php echo "برای ثبت امتیاز ابتدا وارد سایت شوید!"?>
+    <?php
+    $login_url = wp_login_url(); 
+    echo '<a href="' . $login_url . '">برای ثبت امتیاز باید وارد سایت بشی!</a>';
+    ?>
     <?php
     }
     ?>
