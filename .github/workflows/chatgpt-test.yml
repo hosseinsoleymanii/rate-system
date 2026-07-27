@@ -2,28 +2,58 @@ name: ChatGPT TeacherShow Builder
 on:
   pull_request:
     branches: [main]
-permissions:
-  contents: write
 jobs:
-  export-source:
+  build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
         with:
           ref: tmp-teachershow-source
-          fetch-depth: 0
-      - name: Export TeacherShow v247 source
+      - name: Apply first-term report-card implementation
+        run: python3 tools/build_first_term.py plugin-src/teachershow
+      - name: Validate PHP
         shell: bash
         run: |
           set -euo pipefail
-          python -m pip install --quiet gdown
-          gdown 'https://drive.google.com/uc?id=1VxpjSBHGEZFg3rvwtWJDCnaUqU2XDuz8' -O teachershow-v247.zip
-          rm -rf plugin-src
-          mkdir -p plugin-src
-          unzip -q teachershow-v247.zip -d plugin-src
-          rm -f teachershow-v247.zip
-          git config user.name 'ChatGPT Builder'
-          git config user.email 'actions@users.noreply.github.com'
-          git add plugin-src
-          git commit -m 'Import TeacherShow v247 source for temporary build' || true
-          git push origin HEAD:tmp-teachershow-source
+          count=0
+          while IFS= read -r -d '' file; do
+            php -l "$file" >/dev/null
+            count=$((count+1))
+          done < <(find plugin-src/teachershow -type f -name '*.php' -print0)
+          echo "Validated $count PHP files"
+      - name: Validate JavaScript and JSON
+        shell: bash
+        run: |
+          set -euo pipefail
+          js_count=0
+          while IFS= read -r -d '' file; do
+            node --check "$file" >/dev/null
+            js_count=$((js_count+1))
+          done < <(find plugin-src/teachershow -type f -name '*.js' -print0)
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          files=list(Path('plugin-src/teachershow').rglob('*.json'))
+          for path in files:
+              json.loads(path.read_text(encoding='utf-8'))
+          print(f'Validated {len(files)} JSON files')
+          PY
+          echo "Validated $js_count JavaScript files"
+      - name: Validate implementation and archive
+        shell: bash
+        run: |
+          set -euo pipefail
+          grep -q "first_shift" plugin-src/teachershow/includes/classes/users/hst-report-cards.php
+          grep -q "render_first_shift_chart_html" plugin-src/teachershow/includes/classes/users/hst-report-cards.php
+          grep -q "data-hst-report-chart-option=\"bar\"" plugin-src/teachershow/templates/user/users/hst-report-cards.php
+          grep -q "نمایش معدل کتبی" plugin-src/teachershow/templates/user/users/hst-report-cards.php
+          grep -q "Version: 1.0.248" plugin-src/teachershow/teachershow.php
+          rm -f teachershow-first-term-report-card-v248.zip
+          (cd plugin-src && zip -qr ../teachershow-first-term-report-card-v248.zip teachershow)
+          unzip -t plugin-src/teachershow-first-term-report-card-v248.zip >/dev/null
+          ls -lh plugin-src/teachershow-first-term-report-card-v248.zip
+      - uses: actions/upload-artifact@v4
+        with:
+          name: teachershow-first-term-report-card-v248
+          path: plugin-src/teachershow
+          if-no-files-found: error
