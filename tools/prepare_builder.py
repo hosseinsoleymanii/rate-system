@@ -39,5 +39,11 @@ if old not in text:
     raise SystemExit('builder print-settings block was not found')
 text = text.replace(old, new, 1)
 
+old = '"                                                 <span>نمایش نمودار مقایسه‌ای</span>"'
+new = '"                                                <span>نمایش نمودار مقایسه‌ای</span>"'
+if old not in text:
+    raise SystemExit('builder chart-toggle label anchor was not found')
+text = text.replace(old, new, 1)
+
 p.write_text(text, encoding='utf-8')
 print('Builder anchors normalized.')
