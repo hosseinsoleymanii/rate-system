@@ -15,7 +15,10 @@ jobs:
         shell: bash
         run: |
           set +e
-          python3 tools/build_first_term.py plugin-src/teachershow > patch.log 2>&1
+          python3 tools/prepare_builder.py > patch.log 2>&1
+          if [ $? -eq 0 ]; then
+            python3 tools/build_first_term.py plugin-src/teachershow >> patch.log 2>&1
+          fi
           status=$?
           cat patch.log
           exit $status
