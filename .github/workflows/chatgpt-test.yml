@@ -9,19 +9,16 @@ jobs:
       - name: Inspect TeacherShow archive
         shell: bash
         run: |
-          set +e
-          git clone -q --depth=1 --branch tmp-chatgpt-teachershow https://github.com/hosseinsoleymanii/rate-system.git repo
-          cd repo
+          set -euo pipefail
+          python -m pip install --quiet gdown
+          gdown 'https://drive.google.com/uc?id=1VxpjSBHGEZFg3rvwtWJDCnaUqU2XDuz8' -O teachershow-v247.zip
           echo '=== INPUT ==='
-          ls -l input/teachershow-v247.zip
-          file input/teachershow-v247.zip
-          xxd -l 64 input/teachershow-v247.zip
-          echo '=== ZIP TEST ==='
-          unzip -t input/teachershow-v247.zip | tail -n 10
+          ls -lh teachershow-v247.zip
+          file teachershow-v247.zip
+          unzip -t teachershow-v247.zip | tail -n 5
           rm -rf work
-          unzip -q input/teachershow-v247.zip -d work
-          echo "unzip status=$?"
-          find work -maxdepth 3 -type f | head -n 80
+          unzip -q teachershow-v247.zip -d work
+          echo '=== ROOT ==='
+          find work -maxdepth 3 -type f | head -n 100
           echo '=== KEY FILES ==='
-          grep -RIl --include='*.php' --include='*.js' --include='*.css' -E 'ثبت پیام مدیر|معدل کتبی|نوبت اول|report.card|report_card|نمودار' work | head -n 80
-          exit 0
+          grep -RIl --include='*.php' --include='*.js' --include='*.css' -E 'ثبت پیام مدیر|معدل کتبی|نوبت اول|report.card|report_card|افزودن نمودار|نمودار' work | head -n 120
