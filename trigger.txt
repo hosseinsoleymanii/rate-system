@@ -1,1 +1,1 @@
-build-first-term-v248
+build-first-term-v248-diagnostic
