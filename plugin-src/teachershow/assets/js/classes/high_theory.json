@@ -1,0 +1,40 @@
+{
+  "classes": [
+    {
+      "class_name": "دهم ریاضی فیزیک",
+      "class_slug": "d10-riyazi-fizik"
+    },
+    {
+      "class_name": "دهم تجربی",
+      "class_slug": "d10-tajrobi"
+    },
+    {
+      "class_name": "دهم انسانی",
+      "class_slug": "d10-ensani"
+    },
+    {
+      "class_name": "یازدهم ریاضی فیزیک",
+      "class_slug": "y11-riyazi-fizik"
+    },
+    {
+      "class_name": "یازدهم تجربی",
+      "class_slug": "y11-tajrobi"
+    },
+    {
+      "class_name": "یازدهم انسانی",
+      "class_slug": "y11-ensani"
+    },
+    {
+      "class_name": "دوازدهم ریاضی فیزیک",
+      "class_slug": "d12-riyazi-fizik"
+    },
+    {
+      "class_name": "دوازدهم تجربی",
+      "class_slug": "d12-tajrobi"
+    },
+    {
+      "class_name": "دوازدهم انسانی",
+      "class_slug": "d12-ensani"
+    }
+  ]
+}

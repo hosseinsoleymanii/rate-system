@@ -1,0 +1,199 @@
+{
+  "stage": "high_theory",
+  "lessons": [
+    {
+      "class_name": "پایه دهم (ریاضی فیزیک)",
+      "class_slug": "d10-riyazi-fizik",
+      "items": [
+        { "lesson_name": "انضباط", "unit": 2 },
+        { "lesson_name": "تعلیمات دینی (دینی، اخلاق و قرآن) 1", "unit": 2 },
+        { "lesson_name": "عربی، زبان قرآن 1", "unit": 2 },
+        { "lesson_name": "فارسی 1", "unit": 2 },
+        { "lesson_name": "نگارش 1", "unit": 2 },
+        { "lesson_name": "زبان خارجی 1", "unit": 3 },
+        { "lesson_name": "جغرافیای عمومی و استان شناسی", "unit": 2 },
+        { "lesson_name": "تربیت بدنی 1", "unit": 2 },
+        { "lesson_name": "آمادگی دفاعی", "unit": 3 },
+        { "lesson_name": "درس انتخابی", "unit": 2 },
+        { "lesson_name": "ریاضی 1", "unit": 4 },
+        { "lesson_name": "هندسه 1", "unit": 2 },
+        { "lesson_name": "فیزیک 1", "unit": 4 },
+        { "lesson_name": "شیمی 1", "unit": 3 },
+        { "lesson_name": "آزمایشگاه علوم تجربی 1", "unit": 2 }
+      ]
+    },
+    {
+      "class_name": "پایه دهم (تجربی)",
+      "class_slug": "d10-tajrobi",
+      "items": [
+        { "lesson_name": "انضباط", "unit": 2 },
+        { "lesson_name": "تعلیمات دینی (دینی، اخلاق و قرآن) 1", "unit": 2 },
+        { "lesson_name": "عربی، زبان قرآن 1", "unit": 2 },
+        { "lesson_name": "فارسی 1", "unit": 2 },
+        { "lesson_name": "نگارش 1", "unit": 2 },
+        { "lesson_name": "زبان خارجی 1", "unit": 3 },
+        { "lesson_name": "جغرافیای عمومی و استان شناسی", "unit": 2 },
+        { "lesson_name": "تربیت بدنی 1", "unit": 2 },
+        { "lesson_name": "آمادگی دفاعی", "unit": 3 },
+        { "lesson_name": "درس انتخابی", "unit": 2 },
+        { "lesson_name": "ریاضی 1", "unit": 4 },
+        { "lesson_name": "فیزیک 1", "unit": 3 },
+        { "lesson_name": "شیمی 1", "unit": 3 },
+        { "lesson_name": "زیست شناسی 1", "unit": 3 },
+        { "lesson_name": "آزمایشگاه علوم تجربی 1", "unit": 2 }
+      ]
+    },
+    {
+      "class_name": "پایه دهم (انسانی)",
+      "class_slug": "d10-ensani",
+      "items": [
+        { "lesson_name": "انضباط", "unit": 2 },
+        { "lesson_name": "تعلیمات دینی (دینی، اخلاق و قرآن) 1", "unit": 3 },
+        { "lesson_name": "عربی (زبان تخصصی رشته) 1", "unit": 2 },
+        { "lesson_name": "فارسی 1", "unit": 2 },
+        { "lesson_name": "نگارش 1", "unit": 2 },
+        { "lesson_name": "علوم و فنون ادبی 1", "unit": 2 },
+        { "lesson_name": "زبان خارجی 1", "unit": 3 },
+        { "lesson_name": "ریاضی و آمار 1", "unit": 3 },
+        { "lesson_name": "تربیت بدنی 1", "unit": 2 },
+        { "lesson_name": "آمادگی دفاعی", "unit": 3 },
+        { "lesson_name": "درس انتخابی", "unit": 2 },
+        { "lesson_name": "تاریخ 1", "unit": 3 },
+        { "lesson_name": "جامعه شناسی 1", "unit": 2 },
+        { "lesson_name": "جغرافیای عمومی و استان شناسی", "unit": 2 },
+        { "lesson_name": "اقتصاد", "unit": 2 },
+        { "lesson_name": "منطق", "unit": 2 }
+      ]
+    },
+    {
+      "class_name": "پایه یازدهم (ریاضی فیزیک)",
+      "class_slug": "y11-riyazi-fizik",
+      "items": [
+        { "lesson_name": "انضباط", "unit": 2 },
+        { "lesson_name": "تعلیمات دینی (دینی، اخلاق و قرآن) 2", "unit": 2 },
+        { "lesson_name": "عربی، زبان قرآن 2", "unit": 2 },
+        { "lesson_name": "فارسی 2", "unit": 2 },
+        { "lesson_name": "نگارش 2", "unit": 1 },
+        { "lesson_name": "زبان خارجی 2", "unit": 3 },
+        { "lesson_name": "تاریخ معاصر", "unit": 2 },
+        { "lesson_name": "تربیت بدنی 2", "unit": 2 },
+        { "lesson_name": "انسان و محیط زیست", "unit": 2 },
+        { "lesson_name": "درس انتخابی", "unit": 2 },
+        { "lesson_name": "حسابان 1", "unit": 3 },
+        { "lesson_name": "هندسه 2", "unit": 2 },
+        { "lesson_name": "آمار و احتمال", "unit": 2 },
+        { "lesson_name": "فیزیک 2", "unit": 4 },
+        { "lesson_name": "شیمی 2", "unit": 3 },
+        { "lesson_name": "آزمایشگاه علوم تجربی 2", "unit": 1 },
+        { "lesson_name": "زمین شناسی", "unit": 2 }
+      ]
+    },
+    {
+      "class_name": "پایه یازدهم (تجربی)",
+      "class_slug": "y11-tajrobi",
+      "items": [
+        { "lesson_name": "انضباط", "unit": 2 },
+        { "lesson_name": "تعلیمات دینی (دینی، اخلاق و قرآن) 2", "unit": 2 },
+        { "lesson_name": "عربی، زبان قرآن 2", "unit": 2 },
+        { "lesson_name": "فارسی 2", "unit": 2 },
+        { "lesson_name": "نگارش 2", "unit": 1 },
+        { "lesson_name": "زبان خارجی 2", "unit": 3 },
+        { "lesson_name": "تاریخ معاصر", "unit": 2 },
+        { "lesson_name": "تربیت بدنی 2", "unit": 2 },
+        { "lesson_name": "انسان و محیط زیست", "unit": 2 },
+        { "lesson_name": "درس انتخابی", "unit": 2 },
+        { "lesson_name": "ریاضی 2", "unit": 4 },
+        { "lesson_name": "فیزیک 2", "unit": 3 },
+        { "lesson_name": "شیمی 2", "unit": 3 },
+        { "lesson_name": "زیست شناسی 2", "unit": 4 },
+        { "lesson_name": "آزمایشگاه علوم تجربی 2", "unit": 1 },
+        { "lesson_name": "زمین شناسی", "unit": 2 }
+      ]
+    },
+    {
+      "class_name": "پایه یازدهم (انسانی)",
+      "class_slug": "y11-ensani",
+      "items": [
+        { "lesson_name": "انضباط", "unit": 2 },
+        { "lesson_name": "تعلیمات دینی (دینی، اخلاق و قرآن) 2", "unit": 4 },
+        { "lesson_name": "عربی (زبان تخصصی رشته) 2", "unit": 2 },
+        { "lesson_name": "فارسی 2", "unit": 2 },
+        { "lesson_name": "نگارش 2", "unit": 1 },
+        { "lesson_name": "علوم و فنون ادبی 2", "unit": 2 },
+        { "lesson_name": "زبان خارجی 2", "unit": 3 },
+        { "lesson_name": "ریاضی و آمار 2", "unit": 2 },
+        { "lesson_name": "تربیت بدنی 2", "unit": 2 },
+        { "lesson_name": "انسان و محیط زیست", "unit": 2 },
+        { "lesson_name": "درس انتخابی", "unit": 2 },
+        { "lesson_name": "تاریخ 2", "unit": 3 },
+        { "lesson_name": "جامعه شناسی 2", "unit": 3 },
+        { "lesson_name": "جغرافیا 2", "unit": 3 },
+        { "lesson_name": "روانشناسی", "unit": 2 },
+        { "lesson_name": "فلسفه 1", "unit": 2 }
+      ]
+    },
+    {
+      "class_name": "پایه دوازدهم (ریاضی فیزیک)",
+      "class_slug": "d12-riyazi-fizik",
+      "items": [
+        { "lesson_name": "انضباط", "unit": 2 },
+        { "lesson_name": "تعلیمات دینی (دینی، اخلاق و قرآن) 3", "unit": 2 },
+        { "lesson_name": "عربی، زبان قرآن 3", "unit": 2 },
+        { "lesson_name": "فارسی 3", "unit": 2 },
+        { "lesson_name": "نگارش 3", "unit": 2 },
+        { "lesson_name": "زبان خارجی 3", "unit": 4 },
+        { "lesson_name": "علوم اجتماعی", "unit": 2 },
+        { "lesson_name": "تربیت بدنی 3", "unit": 2 },
+        { "lesson_name": "سلامت و بهداشت", "unit": 2 },
+        { "lesson_name": "مدیریت خانواده و سبک زندگی", "unit": 2 },
+        { "lesson_name": "حسابان 2", "unit": 3 },
+        { "lesson_name": "هندسه 3", "unit": 2 },
+        { "lesson_name": "ریاضیات گسسته", "unit": 2 },
+        { "lesson_name": "فیزیک 3", "unit": 4 },
+        { "lesson_name": "شیمی 3", "unit": 4 }
+      ]
+    },
+    {
+      "class_name": "پایه دوازدهم (تجربی)",
+      "class_slug": "d12-tajrobi",
+      "items": [
+        { "lesson_name": "انضباط", "unit": 2 },
+        { "lesson_name": "تعلیمات دینی (دینی، اخلاق و قرآن) 3", "unit": 2 },
+        { "lesson_name": "عربی، زبان قرآن 3", "unit": 2 },
+        { "lesson_name": "فارسی 3", "unit": 2 },
+        { "lesson_name": "نگارش 3", "unit": 2 },
+        { "lesson_name": "زبان خارجی 3", "unit": 4 },
+        { "lesson_name": "علوم اجتماعی", "unit": 2 },
+        { "lesson_name": "تربیت بدنی 3", "unit": 2 },
+        { "lesson_name": "سلامت و بهداشت", "unit": 2 },
+        { "lesson_name": "مدیریت خانواده و سبک زندگی", "unit": 2 },
+        { "lesson_name": "ریاضی 3", "unit": 4 },
+        { "lesson_name": "فیزیک 3", "unit": 3 },
+        { "lesson_name": "شیمی 3", "unit": 4 },
+        { "lesson_name": "زیست شناسی 3", "unit": 4 }
+      ]
+    },
+    {
+      "class_name": "پایه دوازدهم (انسانی)",
+      "class_slug": "d12-ensani",
+      "items": [
+        { "lesson_name": "انضباط", "unit": 2 },
+        { "lesson_name": "تعلیمات دینی (دینی، اخلاق و قرآن) 3", "unit": 4 },
+        { "lesson_name": "عربی (زبان تخصصی رشته) 3", "unit": 2 },
+        { "lesson_name": "فارسی 3", "unit": 2 },
+        { "lesson_name": "نگارش 3", "unit": 2 },
+        { "lesson_name": "علوم و فنون ادبی 3", "unit": 2 },
+        { "lesson_name": "زبان خارجی 3", "unit": 4 },
+        { "lesson_name": "ریاضی و آمار 3", "unit": 2 },
+        { "lesson_name": "تربیت بدنی 3", "unit": 2 },
+        { "lesson_name": "سلامت و بهداشت", "unit": 2 },
+        { "lesson_name": "مدیریت خانواده و سبک زندگی", "unit": 2 },
+        { "lesson_name": "تاریخ 3", "unit": 2 },
+        { "lesson_name": "جامعه شناسی 3", "unit": 3 },
+        { "lesson_name": "جغرافیا 3", "unit": 2 },
+        { "lesson_name": "مطالعات فرهنگی", "unit": 2 },
+        { "lesson_name": "فلسفه 2", "unit": 2 }
+      ]
+    }
+  ]
+}
