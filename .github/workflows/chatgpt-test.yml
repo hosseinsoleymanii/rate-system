@@ -6,65 +6,22 @@ jobs:
   inspect:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
       - name: Inspect TeacherShow archive
         shell: bash
         run: |
           set +e
-          {
-            echo '=== INPUT ==='
-            ls -lh input/teachershow-v247.zip
-            file input/teachershow-v247.zip
-            xxd -l 64 input/teachershow-v247.zip
-            echo '=== ZIP TEST ==='
-            unzip -t input/teachershow-v247.zip
-            echo '=== EXTRACT ==='
-            rm -rf work
-            unzip -q input/teachershow-v247.zip -d work
-            echo "unzip status=$?"
-          } > diagnostic.txt 2>&1
-          python3 - <<'PY' >> diagnostic.txt 2>&1
-          from pathlib import Path
-          root = Path('work')
-          out = []
-          out.append('=== FILE TREE ===')
-          files = sorted(p for p in root.rglob('*') if p.is_file())
-          for p in files:
-              out.append(str(p))
-          needles = [
-              'ثبت پیام مدیر', 'افزودن نمودار', 'معدل کتبی', 'نوبت اول',
-              'report-card', 'report_card', 'chart', 'نمودار', 'written',
-              'first_term', 'term_first', 'show_chart', 'معدل'
-          ]
-          out.append('\n=== MATCH CONTEXT ===')
-          for p in files:
-              if p.suffix.lower() not in {'.php','.js','.css','.json','.html','.txt'}:
-                  continue
-              try:
-                  text = p.read_text(encoding='utf-8')
-              except Exception:
-                  continue
-              lines = text.splitlines()
-              hits=[i for i,line in enumerate(lines) if any(n.lower() in line.lower() for n in needles)]
-              if not hits:
-                  continue
-              out.append(f'\n--- {p} ({len(hits)} hits) ---')
-              covered=[]
-              for i in hits:
-                  a=max(0,i-5); b=min(len(lines),i+6)
-                  if any(a>=x and b<=y for x,y in covered):
-                      continue
-                  covered.append((a,b))
-                  for j in range(a,b):
-                      out.append(f'{j+1:05d}: {lines[j]}')
-                  out.append('...')
-          print('\n'.join(out))
-          PY
-          tail -n 1500 diagnostic.txt
+          git clone -q --depth=1 --branch tmp-chatgpt-teachershow https://github.com/hosseinsoleymanii/rate-system.git repo
+          cd repo
+          echo '=== INPUT ==='
+          ls -l input/teachershow-v247.zip
+          file input/teachershow-v247.zip
+          xxd -l 64 input/teachershow-v247.zip
+          echo '=== ZIP TEST ==='
+          unzip -t input/teachershow-v247.zip | tail -n 10
+          rm -rf work
+          unzip -q input/teachershow-v247.zip -d work
+          echo "unzip status=$?"
+          find work -maxdepth 3 -type f | head -n 80
+          echo '=== KEY FILES ==='
+          grep -RIl --include='*.php' --include='*.js' --include='*.css' -E 'ثبت پیام مدیر|معدل کتبی|نوبت اول|report.card|report_card|نمودار' work | head -n 80
           exit 0
-      - uses: actions/upload-artifact@v4
-        if: always()
-        with:
-          name: teachershow-inspection
-          path: diagnostic.txt
-          if-no-files-found: error
