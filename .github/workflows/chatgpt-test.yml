@@ -2,23 +2,28 @@ name: ChatGPT TeacherShow Builder
 on:
   pull_request:
     branches: [main]
+permissions:
+  contents: write
 jobs:
-  inspect:
+  export-source:
     runs-on: ubuntu-latest
     steps:
-      - name: Inspect TeacherShow archive
+      - uses: actions/checkout@v4
+        with:
+          ref: tmp-teachershow-source
+          fetch-depth: 0
+      - name: Export TeacherShow v247 source
         shell: bash
         run: |
           set -euo pipefail
           python -m pip install --quiet gdown
           gdown 'https://drive.google.com/uc?id=1VxpjSBHGEZFg3rvwtWJDCnaUqU2XDuz8' -O teachershow-v247.zip
-          echo '=== INPUT ==='
-          ls -lh teachershow-v247.zip
-          file teachershow-v247.zip
-          unzip -t teachershow-v247.zip | tail -n 5
-          rm -rf work
-          unzip -q teachershow-v247.zip -d work
-          echo '=== ROOT ==='
-          find work -maxdepth 3 -type f | head -n 100
-          echo '=== KEY FILES ==='
-          grep -RIl --include='*.php' --include='*.js' --include='*.css' -E 'ثبت پیام مدیر|معدل کتبی|نوبت اول|report.card|report_card|افزودن نمودار|نمودار' work | head -n 120
+          rm -rf plugin-src
+          mkdir -p plugin-src
+          unzip -q teachershow-v247.zip -d plugin-src
+          rm -f teachershow-v247.zip
+          git config user.name 'ChatGPT Builder'
+          git config user.email 'actions@users.noreply.github.com'
+          git add plugin-src
+          git commit -m 'Import TeacherShow v247 source for temporary build' || true
+          git push origin HEAD:tmp-teachershow-source
