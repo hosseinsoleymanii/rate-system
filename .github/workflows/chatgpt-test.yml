@@ -1,27 +1,60 @@
-name: ChatGPT Test
+name: ChatGPT TeacherShow Builder
 on:
   pull_request:
     branches: [main]
 jobs:
-  test:
+  inspect:
     runs-on: ubuntu-latest
     steps:
-      - name: Try Drive download
+      - uses: actions/checkout@v4
+      - name: Inspect TeacherShow archive
         shell: bash
         run: |
-          set +e
-          python -m pip install --quiet gdown
-          gdown 'https://drive.google.com/uc?id=1C_3x_OzXqaS2LaEaggiJaLbN0qmny_2o' -O input.zip 2>&1 | tee gdown.log
-          ls -lh input.zip gdown.log 2>&1 | tee status.log
-          file input.zip 2>&1 | tee -a status.log
-          unzip -t input.zip 2>&1 | tee unzip.log
-          exit 0
+          set -euo pipefail
+          unzip -q input/teachershow-v247.zip -d work
+          python3 - <<'PY'
+          from pathlib import Path
+          root = Path('work')
+          out = []
+          out.append('=== FILE TREE ===')
+          files = sorted(p for p in root.rglob('*') if p.is_file())
+          for p in files:
+              out.append(str(p))
+          needles = [
+              'ثبت پیام مدیر', 'افزودن نمودار', 'معدل کتبی', 'نوبت اول',
+              'report-card', 'report_card', 'chart', 'نمودار', 'written',
+              'first_term', 'term_first', 'show_chart'
+          ]
+          out.append('\n=== MATCH CONTEXT ===')
+          for p in files:
+              if p.suffix.lower() not in {'.php','.js','.css','.json','.html','.txt'}:
+                  continue
+              try:
+                  text = p.read_text(encoding='utf-8')
+              except Exception:
+                  continue
+              lines = text.splitlines()
+              hits=[]
+              for i,line in enumerate(lines):
+                  if any(n.lower() in line.lower() for n in needles):
+                      hits.append(i)
+              if not hits:
+                  continue
+              out.append(f'\n--- {p} ({len(hits)} hits) ---')
+              shown=set()
+              for i in hits:
+                  a=max(0,i-4); b=min(len(lines),i+5)
+                  key=(a,b)
+                  if key in shown: continue
+                  shown.add(key)
+                  for j in range(a,b):
+                      out.append(f'{j+1:05d}: {lines[j]}')
+                  out.append('...')
+          Path('diagnostic.txt').write_text('\n'.join(out), encoding='utf-8')
+          print('\n'.join(out[-1200:]))
+          PY
+          unzip -t input/teachershow-v247.zip
       - uses: actions/upload-artifact@v4
         with:
-          name: chatgpt-drive-test
-          path: |
-            input.zip
-            gdown.log
-            status.log
-            unzip.log
-          if-no-files-found: warn
+          name: teachershow-inspection
+          path: diagnostic.txt
