@@ -1,9 +1,7 @@
 name: ChatGPT Test
 on:
-  push:
-    paths:
-      - '.github/workflows/chatgpt-test.yml'
-      - 'drive-relay.html'
+  pull_request:
+    branches: [main]
 jobs:
   test:
     runs-on: ubuntu-latest
