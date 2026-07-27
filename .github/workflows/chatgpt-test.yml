@@ -10,7 +10,13 @@ jobs:
         with:
           ref: tmp-teachershow-source
       - name: Apply first-term report-card implementation
-        run: python3 tools/build_first_term.py plugin-src/teachershow
+        shell: bash
+        run: |
+          set +e
+          python3 tools/build_first_term.py plugin-src/teachershow > patch.log 2>&1
+          status=$?
+          cat patch.log
+          exit $status
       - name: Validate PHP
         shell: bash
         run: |
@@ -48,11 +54,18 @@ jobs:
           grep -q "data-hst-report-chart-option=\"bar\"" plugin-src/teachershow/templates/user/users/hst-report-cards.php
           grep -q "نمایش معدل کتبی" plugin-src/teachershow/templates/user/users/hst-report-cards.php
           grep -q "Version: 1.0.248" plugin-src/teachershow/teachershow.php
-          rm -f teachershow-first-term-report-card-v248.zip
-          (cd plugin-src && zip -qr ../teachershow-first-term-report-card-v248.zip teachershow)
+          rm -f plugin-src/teachershow-first-term-report-card-v248.zip
+          (cd plugin-src && zip -qr teachershow-first-term-report-card-v248.zip teachershow)
           unzip -t plugin-src/teachershow-first-term-report-card-v248.zip >/dev/null
           ls -lh plugin-src/teachershow-first-term-report-card-v248.zip
       - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: teachershow-build-diagnostics
+          path: patch.log
+          if-no-files-found: warn
+      - uses: actions/upload-artifact@v4
+        if: success()
         with:
           name: teachershow-first-term-report-card-v248
           path: plugin-src/teachershow
