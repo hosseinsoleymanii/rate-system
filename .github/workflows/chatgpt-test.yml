@@ -1,0 +1,15 @@
+name: ChatGPT Test
+on:
+  push:
+    paths:
+      - '.github/workflows/chatgpt-test.yml'
+      - 'drive-relay.html'
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo 'workflow-ok' > result.txt
+      - uses: actions/upload-artifact@v4
+        with:
+          name: chatgpt-test-result
+          path: result.txt
